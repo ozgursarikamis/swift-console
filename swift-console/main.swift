@@ -7,6 +7,5 @@
 //
 
 import Foundation
-
-print("Hello, World!")
-
+var optString: String? = "Hello";
+print(optString == nil)
