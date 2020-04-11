@@ -55,3 +55,24 @@ print(greet())
 var g = greet(name: "Özgür", on: "Saturday")
 print(g);
 
+
+// return multiple values:
+func calculateStats(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
+    var min = scores[0]
+    var max = scores[0]
+    var sum = 0
+
+    for score in scores {
+        if score > max {
+            max = score
+        } else if score < min {
+            min = score
+        }
+        sum += score
+    }
+    return (min, max, sum)
+}
+
+let stats = calculateStats(scores: [5, 3, 100, 3, 9])
+print(stats)
+
