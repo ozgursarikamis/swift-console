@@ -3,3 +3,16 @@
 *.plist
 *.plist
 swift-console.xcodeproj/xcuserdata/ozgursarikamis.xcuserdatad/xcschemes/xcschememanagement.plist
+.idea/xcode.xml
+swift-console/.idea/workspace.xml
+swift-console/.idea/vcs.xml
+swift-console/.idea/swift-console.iml
+swift-console/.idea/modules.xml
+swift-console/.idea/misc.xml
+.idea/vcs.xml
+.idea/swift-console.iml
+.idea/runConfigurations/swift_console.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/workspace.xml
