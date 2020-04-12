@@ -8,23 +8,23 @@
 
 import Foundation
 
-enum PrinterError: Error {
-    case outOfPaper
-    case noToner
-    case onFire
-}
+/*
+ Use defer to write a block of code that is executed after all other code in the function, just before the function returns.
+ */
 
-func send(job: Int, toPrinter printerName: String) throws -> String {
-    if printerName == "Never has toner" {
-        throw PrinterError.noToner
+var fridgeIsOpen = false
+var fridgeContent = ["milk", "eggs", "leftovers"]
+
+func fridgeContains(_ food: String) -> Bool {
+    fridgeIsOpen = true
+    defer {
+        print(fridgeIsOpen)
+        fridgeIsOpen = false
     }
-    return "Job Sent"
-}
-do {
-    // send(job: 1040, toPrinter: "Bi Sheng");
-    let resp = try send(job: 1040, toPrinter: "Never has toner");
-    print(resp)
-} catch {
-    print(error)
+    
+    let result = fridgeContent.contains(food)
+    return result
 }
 
+print(fridgeContains("banana"))
+print(fridgeIsOpen)
