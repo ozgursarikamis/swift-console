@@ -8,9 +8,33 @@
 
 import Foundation
 
-var numbers = [20, 19, 7, 12]
+class Shape {
+    var numberOfSides = 0;
 
-var mappedNumbers = numbers.map({ number in 3 + number })
-var sortedNumbers = mappedNumbers.sorted(by: { $1 > $0 })
-print(mappedNumbers)
-print(sortedNumbers)
+    func simpleDesc() -> String {
+        return "a shape with \(numberOfSides) sides";
+    }
+}
+
+var shape = Shape();
+shape.numberOfSides = 7;
+var desc = shape.simpleDesc();
+print(desc);
+
+class NamedShape {
+    var numberOfSides: Int = 0
+    var name: String;
+
+    init(name: String) {
+        self.name = name;
+    }
+
+    func simpleDesc() -> String {
+        return "A sahpe with \(numberOfSides) sides"
+    }
+}
+
+var namedShape = NamedShape(name: "circle");
+namedShape.numberOfSides = 0;
+var desc2 = namedShape.simpleDesc();
+print(desc2)
