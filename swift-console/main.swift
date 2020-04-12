@@ -8,28 +8,17 @@
 
 import Foundation
 
-enum Rank: Int {
-    case ace = 1
-    case two, three, four, five, six, seven, eight, nine, ten
-    case jack, queen, king
-
-    func simpleDesc() -> String {
-        switch self {
-        case .ace:
-            return "ace"
-        case .jack:
-            return "jack"
-        case .queen:
-            return "queen"
-        case .king:
-            return "king"
-        default:
-            return String(self.rawValue)
-        }
-    }
+enum ServerResponse {
+    case result(String, String)
+    case failure(String)
 }
 
-let ace = Rank.ace
-let aceRaw = ace.rawValue; // prints Int
-print(ace.simpleDesc()) // prints String
-print(ace)
+let success = ServerResponse.result("6.00", "8:09 pm")
+let failure = ServerResponse.failure("out of cheese")
+
+switch success {
+    case let .result(sunrise, sunset):
+        print("Sunrise is at \(sunrise) and sunset is at \(sunset)")
+    case let.failure(message):
+        print("Failure... \(message)")
+}
