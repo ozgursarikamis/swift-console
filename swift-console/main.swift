@@ -8,15 +8,14 @@
 
 import Foundation
 
-
-func returnFifteen() -> Int {
-    var y = 10;
-
-    func add() {
-        y += 5;
+func makeIncrementer() -> ((Int) -> Int) { // output: a function takes Int as parameter, outputs: Int
+    func addOne(number: Int) -> Int {
+        return 1 + number;
     }
-    add()
-    return y;
+    return addOne;
 }
 
-returnFifteen(); // functions can be nested.
+var increment = makeIncrementer();
+let i = increment(7)
+print(i)
+
