@@ -8,21 +8,15 @@
 
 import Foundation
 
-let interestingNumbers = [
-    "Prime": [2, 3, 5, 7, 11, 13],
-    "Fibionacci": [1, 1, 2, 3, 5, 8],
-    "Square": [1, 2, 4, 9, 16, 25]
-];
 
-for (kind, numbers) in interestingNumbers {
-    print(kind, numbers);
+func returnFifteen() -> Int {
+    var y = 10;
+
+    func add() {
+        y += 5;
+    }
+    add()
+    return y;
 }
 
-
-let stats = calculateStats(scores: [5, 3, 100, 3, 9])
-print(stats)
-//
-
-let numbers = [20, 19, 7, 12]
-let result = hasAnyMatches(list: numbers, condition: lessThanTen)
-print(result)
+returnFifteen(); // functions can be nested.
