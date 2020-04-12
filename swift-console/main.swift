@@ -8,23 +8,16 @@
 
 import Foundation
 
-/*
- Use defer to write a block of code that is executed after all other code in the function, just before the function returns.
- */
-
-var fridgeIsOpen = false
-var fridgeContent = ["milk", "eggs", "leftovers"]
-
-func fridgeContains(_ food: String) -> Bool {
-    fridgeIsOpen = true
-    defer {
-        print(fridgeIsOpen)
-        fridgeIsOpen = false
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
+    var result = [Item]();
+    for _ in 0...numberOfTimes {
+        result.append(item)
     }
-    
-    let result = fridgeContent.contains(food)
     return result
 }
 
-print(fridgeContains("banana"))
-print(fridgeIsOpen)
+let i = makeArray(repeating: "knock", numberOfTimes: 4)
+print(i)
+
+let k = makeArray(repeating: 2, numberOfTimes: 3)
+print("k", k)
