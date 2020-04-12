@@ -8,19 +8,6 @@
 
 import Foundation
 
-class Shape {
-    var numberOfSides = 0;
-
-    func simpleDesc() -> String {
-        return "a shape with \(numberOfSides) sides";
-    }
-}
-
-var shape = Shape();
-shape.numberOfSides = 7;
-var desc = shape.simpleDesc();
-print(desc);
-
 class NamedShape {
     var numberOfSides: Int = 0
     var name: String;
@@ -34,7 +21,26 @@ class NamedShape {
     }
 }
 
-var namedShape = NamedShape(name: "circle");
-namedShape.numberOfSides = 0;
-var desc2 = namedShape.simpleDesc();
-print(desc2)
+class Square : NamedShape {
+    var sideLength: Double = 0;
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength;
+        super.init(name: name);
+        numberOfSides = 4;
+    }
+
+    func area() -> Double {
+        return sideLength * sideLength;
+    }
+
+    override func simpleDesc() -> String {
+        return "a square with sides of length \(sideLength)"
+    }
+}
+
+let test = Square(sideLength: 5.4, name: "my test square")
+test.area()
+test.simpleDesc()
+
+print(test.area())
+print(test.simpleDesc())
