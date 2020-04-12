@@ -8,47 +8,23 @@
 
 import Foundation
 
-protocol ExampleProtocol {
-    var simpleDesc: String { get }
-    mutating func adjust()
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
 }
 
-class SimpleClass: ExampleProtocol {
-    var simpleDesc: String = "a sample class"
-    var anotherProperty: Int = 65;
-    
-    func adjust() {
-        simpleDesc += " Now 100% adjusted";
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never has toner" {
+        throw PrinterError.noToner
     }
+    return "Job Sent"
+}
+do {
+    // send(job: 1040, toPrinter: "Bi Sheng");
+    let resp = try send(job: 1040, toPrinter: "Never has toner");
+    print(resp)
+} catch {
+    print(error)
 }
 
-class SimpleClass2: ExampleProtocol {
-    var simpleDesc: String = "a simple simple class"
-    var anotherProp: Int64 = 65
-    func adjust() {
-        simpleDesc += " , from adjust method";
-    }
-}
-
-var a = SimpleClass();
-var b = SimpleClass2();
-
-print(a.simpleDesc);
-a.adjust();
-
-
-extension Int: ExampleProtocol {
-    var simpleDesc: String {
-        return "the number \(self)"
-    }
-    mutating func adjust() {
-        self += 42
-    }
-}
-print(7.simpleDesc)
-
-print("------------------")
-let protocolValue: ExampleProtocol = a;
-let protocolValue2: ExampleProtocol = b;
-
-print(protocolValue.simpleDesc)
