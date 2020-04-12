@@ -8,14 +8,9 @@
 
 import Foundation
 
-func makeIncrementer() -> ((Int) -> Int) { // output: a function takes Int as parameter, outputs: Int
-    func addOne(number: Int) -> Int {
-        return 1 + number;
-    }
-    return addOne;
-}
+var numbers = [20, 19, 7, 12]
 
-var increment = makeIncrementer();
-let i = increment(7)
-print(i)
-
+var mappedNumbers = numbers.map({ number in 3 + number })
+var sortedNumbers = mappedNumbers.sorted(by: { $1 > $0 })
+print(mappedNumbers)
+print(sortedNumbers)
