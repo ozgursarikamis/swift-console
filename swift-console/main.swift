@@ -8,17 +8,20 @@
 
 import Foundation
 
-enum ServerResponse {
-    case result(String, String)
-    case failure(String)
+protocol ExampleProtocol {
+    var simpleDesc: String { get }
+    mutating func adjust()
 }
 
-let success = ServerResponse.result("6.00", "8:09 pm")
-let failure = ServerResponse.failure("out of cheese")
-
-switch success {
-    case let .result(sunrise, sunset):
-        print("Sunrise is at \(sunrise) and sunset is at \(sunset)")
-    case let.failure(message):
-        print("Failure... \(message)")
+class SimpleClass: ExampleProtocol {
+    var simpleDesc: String = "a sample class"
+    var anotherProperty: Int = 65;
+    
+    func adjust() {
+        simpleDesc += " Now 100% adjusted";
+    }
 }
+
+var a = SimpleClass();
+print(a.simpleDesc);
+a.adjust();

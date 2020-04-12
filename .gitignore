@@ -17,3 +17,4 @@ swift-console/.idea/misc.xml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/workspace.xml
 swift-console.xcodeproj/xcuserdata/ozgursarikamis.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+*.xcexplist
