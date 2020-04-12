@@ -38,13 +38,6 @@ class Square : NamedShape {
     }
 }
 
-let test = Square(sideLength: 5.4, name: "my test square")
-test.area()
-test.simpleDesc()
-
-print(test.area())
-print(test.simpleDesc())
-
 class ETriangle: NamedShape {
     var sideLength: Double = 0;
 
@@ -66,8 +59,30 @@ class ETriangle: NamedShape {
     }
 }
 
-var triangle = ETriangle(sideLength: 3.1, name: "a tringle")
-print(triangle.perimeter)
-triangle.perimeter = 9.9
-print(triangle.sideLength)
+class TriangleAndSquare {
+    /*
+    If you don’t need to compute the property but still need to provide code that is run before and after setting a new value,
+    use willSet and didSet. The code you provide is run any time the value changes outside of an initializer.
+    For example, the class below ensures that the side length of its triangle is always the same as the side length of its square.
+    */
+    var triangle: ETriangle {
+        willSet { // before setter is triggered
+            square.sideLength = newValue.sideLength
+        }
+    }
+    var square: Square {
+        willSet { // before set is triggered
+            triangle.sideLength = newValue.sideLength;
+        }
+    }
+
+    init(size: Double, name: String) {
+        square = Square(sideLength: size, name: name)
+        triangle = ETriangle(sideLength: size, name: name)
+    }
+}
+
+var tAnds = TriangleAndSquare(size: 10, name: "another test shape")
+print(tAnds.square.sideLength)
+print(tAnds.square.name)
 
